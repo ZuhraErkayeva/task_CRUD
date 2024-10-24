@@ -8,7 +8,6 @@ from django.contrib.auth import login,logout
 from django.views.generic import FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-from django.contrib.auth.decorators import login_required
 
 
 class TaskListView(ListView):
