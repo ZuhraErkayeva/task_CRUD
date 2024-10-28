@@ -22,7 +22,7 @@
                         <a class="nav-link" href="{% url 'task-list' %}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -31,25 +31,22 @@
 
     <div class="container mt-5">
         <h2 class="mb-4">Create New Task</h2>
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="task-title" class="form-label">Task Title</label>
-                <input type="text" class="form-control" id="task-title" required>
-            </div>
-            <div class="mb-3">
-                <label for="task-description" class="form-label">Description</label>
-                <textarea class="form-control" id="task-description" rows="3"></textarea>
+                <input type="text" class="form-control" id="task-title" name="title" required>
             </div>
             <div class="mb-3">
                 <label for="due-date" class="form-label">Due Date</label>
-                <input type="date" class="form-control" id="due-date" required>
+                <input type="date" class="form-control" id="due-date" name="due_date" required>
             </div>
             <div class="mb-3">
                 <label for="task-status" class="form-label">Status</label>
-                <select class="form-select" id="task-status" required>
-                    <option value="not-started">Not Started</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="completed">Completed</option>
+                <select class="form-select" id="task-status" name="status" required>
+                    <option value="com">Completed</option>
+                    <option value="inp">In Progress</option>
+                    <option value="fld">Failed</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Create Task</button>

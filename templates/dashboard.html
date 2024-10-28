@@ -28,7 +28,7 @@
                         <a class="nav-link" href="{% url 'task-create' %}">Create Task</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +52,7 @@
                     <tr>
                         <td>{{ task.title }}</td>
                         <td>{{ task.due_date }}</td>
-                        <td><span class="badge bg-warning">{{ task.status }}</span></td>
+                        <td><span class="badge bg-warning">{{ task.get_status_display }}</span></td>
                         <td>
                             <a href="{% url 'task-update' pk=task.pk %}" class="btn btn-sm btn-primary">Edit</a>
                             <form action="{% url 'task-delete' pk=task.pk %}" method="POST" style="display:inline;">
